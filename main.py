@@ -31,4 +31,7 @@ classificador.compile(optimizer = 'adam', loss = 'binary_crossentropy',
 
 classificador.fit(previsores_treinamento, classe_treinamento, 
                   batch_size = 10, epochs = 100)
+
+previsoes = classificador.predict(previsores_teste)
+print(previsoes)
 print ('ok')
