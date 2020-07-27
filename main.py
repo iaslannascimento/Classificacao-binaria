@@ -7,6 +7,7 @@ from sklearn.model_selection import train_test_split
 from keras.models import Sequential
 from keras.layers import Dense
 
+
 #leitura do arquivo que contém os atributos
 previsores = pd.read_csv('entradas_breast.csv')
 #leitura dos arquivos que contém as classes
@@ -33,5 +34,9 @@ classificador.fit(previsores_treinamento, classe_treinamento,
                   batch_size = 10, epochs = 100)
 
 previsoes = classificador.predict(previsores_teste)
-print(previsoes)
+previsoes = (previsores_teste > 0.5)
+#print(previsoes)
+from sklearn.metrics import confusion_matrix, accuracy_score
+precisao = accuracy_score(classe_teste, previsoes.round(), normalize=False)
+#print(precisao)
 print ('ok')
